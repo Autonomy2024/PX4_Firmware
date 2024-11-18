@@ -66,9 +66,13 @@ private:
 
 			msg.time_usec = gps.timestamp;
 			msg.fix_type = gps.fix_type;
-			msg.lat = gps.lat;
-			msg.lon = gps.lon;
-			msg.alt = gps.alt;
+			// msg.lat = gps.lat;
+			// msg.lon = gps.lon;
+			// msg.alt = gps.alt;
+			// Temporary modification of sending GPS 3D velocity
+			msg.lat =  int(gps.vel_n_m_s * 1000);
+			msg.lon = int(gps.vel_e_m_s * 1000);
+			msg.alt = int(gps.vel_d_m_s * 1000);
 			msg.eph = gps.hdop * 100; // GPS HDOP horizontal dilution of position (unitless)
 			msg.epv = gps.vdop * 100; // GPS VDOP vertical dilution of position (unitless)
 
