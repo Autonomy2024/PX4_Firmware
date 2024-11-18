@@ -121,6 +121,18 @@ then
 
 	param set SENS_BOARD_X_OFF 0.000001
 	param set SENS_DPRES_OFF 0.001
+
+	param set COM_RCL_EXCEPT 4
+
+	# GPS used
+	param set EKF2_AID_MASK 1
+	# Vision used and GPS denied
+	# param set EKF2_AID_MASK 24
+
+	# Barometer used for hight measurement
+	param set EKF2_HGT_MODE 0
+	# Barometer denied and vision used for hight measurement
+	# param set EKF2_HGT_MODE 3
 fi
 
 param set-default BAT1_N_CELLS 4
@@ -154,6 +166,7 @@ param set-default SDLOG_PROFILE 131
 param set-default SDLOG_DIRS_MAX 7
 
 param set-default TRIG_INTERFACE 3
+
 
 # Adapt timeout parameters if simulation runs faster or slower than realtime.
 if [ -n "$PX4_SIM_SPEED_FACTOR" ]; then
