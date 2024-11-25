@@ -32,7 +32,7 @@
             <arg name="R" value="0"/>
             <arg name="P" value="0"/>
             <arg name="Y" value="0"/>
-            <arg name="vehicle" value="iris"/>
+            <arg name="vehicle" value="typhoon_h480"/>
             <arg name="sdf" value="typhoon_h480"/>
             <arg name="mavlink_udp_port" value="18570"/>
             <arg name="mavlink_tcp_port" value="4560"/>
