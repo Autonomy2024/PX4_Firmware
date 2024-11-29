@@ -51,7 +51,7 @@
 * @group Mount
 * @reboot_required true
 */
-PARAM_DEFINE_INT32(MNT_MODE_IN, -1);
+PARAM_DEFINE_INT32(MNT_MODE_IN, 0);
 
 /**
 * Mount output mode
@@ -68,7 +68,7 @@ PARAM_DEFINE_INT32(MNT_MODE_IN, -1);
 * @group Mount
 * @reboot_required true
 */
-PARAM_DEFINE_INT32(MNT_MODE_OUT, 0);
+PARAM_DEFINE_INT32(MNT_MODE_OUT, 2);
 
 /**
 * Mavlink System ID of the mount
