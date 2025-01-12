@@ -24,7 +24,7 @@
         <!-- MAVROS and vehicle configs -->
         <arg name="ID" value="0"/>
         <arg name="ID_in_group" value="0"/>
-        <arg name="fcu_url" default="udp://:14540@localhost:14580"/>
+        <arg name="fcu_url" default="udp://:24540@localhost:14580"/>
         <!-- PX4 SITL and vehicle spawn -->
         <include file="$(find px4)/launch/single_vehicle_spawn_sdf.launch">
             <arg name="x" value="0"/>
@@ -53,7 +53,7 @@
         <!-- MAVROS and vehicle configs -->
             <arg name="ID" value="1"/>
             <arg name="ID_in_group" value="1"/>
-            <arg name="fcu_url" default="udp://:14541@localhost:14581"/>
+            <arg name="fcu_url" default="udp://:24541@localhost:14581"/>
         <!-- PX4 SITL and vehicle spawn -->
         <include file="$(find px4)/launch/single_vehicle_spawn_sdf.launch">
             <arg name="x" value="0"/>
