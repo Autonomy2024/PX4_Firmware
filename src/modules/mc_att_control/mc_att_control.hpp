@@ -58,6 +58,7 @@
 #include <lib/mathlib/math/filter/AlphaFilter.hpp>
 
 #include <AttitudeControl.hpp>
+#include <SO3Control.hpp>
 
 using namespace time_literals;
 
@@ -65,6 +66,15 @@ using namespace time_literals;
  * Multicopter attitude control app start / stop handling function
  */
 extern "C" __EXPORT int mc_att_control_main(int argc, char *argv[]);
+
+enum MC_ATTI_METHOD_m
+{
+	ATTI_METHOD_QUAT = 0,
+	ATTI_METHOD_SO3 = 1
+};
+
+
+
 
 class MulticopterAttitudeControl : public ModuleBase<MulticopterAttitudeControl>, public ModuleParams,
 	public px4::WorkItem
@@ -100,6 +110,7 @@ private:
 	void		generate_attitude_setpoint(const matrix::Quatf &q, float dt, bool reset_yaw_sp);
 
 	AttitudeControl _attitude_control; ///< class for attitude control calculations
+	SO3Control _so3_control;
 
 	uORB::SubscriptionInterval _parameter_update_sub{ORB_ID(parameter_update), 1_s};
 
@@ -138,6 +149,7 @@ private:
 	bool _vtol_in_transition_mode{false};
 
 	uint8_t _quat_reset_counter{0};
+	uint8_t _mc_atti_method{0};
 
 	DEFINE_PARAMETERS(
 		(ParamFloat<px4::params::MC_ROLL_P>) _param_mc_roll_p,
@@ -160,7 +172,8 @@ private:
 		(ParamInt<px4::params::MPC_THR_CURVE>) _param_mpc_thr_curve,				/**< throttle curve behavior */
 
 		(ParamInt<px4::params::MC_AIRMODE>) _param_mc_airmode,
-		(ParamFloat<px4::params::MC_MAN_TILT_TAU>) _param_mc_man_tilt_tau
+		(ParamFloat<px4::params::MC_MAN_TILT_TAU>) _param_mc_man_tilt_tau,
+		(ParamInt<px4::params::MC_ATTI_METHOD>) _param_mc_atti_method
 	)
 };
 
